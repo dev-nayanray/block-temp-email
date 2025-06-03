@@ -1,13 +1,14 @@
 <?php
 /**
  * Plugin Name: Block Temporary Email (BTE)
- * Plugin URI:  https://example.com/block-temporary-email
+ * Plugin URI:  https://yourdomain.com/block-temporary-email
  * Description: Block disposable or temporary email addresses on registration, WooCommerce checkout, and major form plugins. Supports multisite with admin settings and logging.
  * Version:     1.0.0
  * Author:      Nayan Ray
- * Author URI:  https://example.com
+ * Author URI:  https://yourdomain.com
  * Text Domain: block-temp-email
- * Domain Path: /languages
+ *
+ * License: GPLv2 or later
  *
  * Requires PHP: 7.4
  * Requires at least: 5.8

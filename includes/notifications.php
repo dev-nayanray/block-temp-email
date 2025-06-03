@@ -17,9 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function bte_notify_admin( $email, $source ) {
     $admin_email = get_option( 'admin_email' );
-    $subject     = sprintf( __( '[%s] Blocked Disposable Email Attempt', 'block-temp-email' ), get_bloginfo( 'name' ) );
+    /* translators: %s: Blog name */
+    $subject     = sprintf( __( '[%1$s] Blocked Disposable Email Attempt', 'block-temp-email' ), get_bloginfo( 'name' ) );
+    /* translators: 1: Email address, 2: Source, 3: Time, 4: IP Address */
     $message     = sprintf(
-        __( "A disposable or temporary email address was blocked.\n\nEmail: %s\nSource: %s\nTime: %s\nIP Address: %s\n", 'block-temp-email' ),
+        __( "A disposable or temporary email address was blocked.\n\nEmail: %1\$s\nSource: %2\$s\nTime: %3\$s\nIP Address: %4\$s\n", 'block-temp-email' ),
         sanitize_email( $email ),
         sanitize_text_field( $source ),
         current_time( 'mysql' ),

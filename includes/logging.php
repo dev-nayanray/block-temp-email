@@ -39,14 +39,16 @@ function bte_log_blocked_attempt( $email, $source ) {
  * @return string IP address.
  */
 function bte_get_user_ip() {
-    if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) && ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+        $ip = sanitize_text_field( wp_unslash( $_SERVER['HTTP_CLIENT_IP'] ) );
+    } elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+        $ip = sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) );
+    } elseif ( isset( $_SERVER['REMOTE_ADDR'] ) && ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+        $ip = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) );
     } else {
-        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+        $ip = '';
     }
-    return sanitize_text_field( $ip );
+    return $ip;
 }
 
 /**

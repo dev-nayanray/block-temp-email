@@ -127,6 +127,10 @@ function bte_woocommerce_check_email() {
         return;
     }
 
+    if ( ! isset( $_POST['bte_woocommerce_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['bte_woocommerce_nonce'] ) ), 'bte_woocommerce_action' ) ) {
+        return;
+    }
+
     $email = sanitize_email( wp_unslash( $_POST['billing_email'] ) );
     $error = bte_validate_temp_email( $email );
     if ( is_wp_error( $error ) ) {
