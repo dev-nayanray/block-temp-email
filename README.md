@@ -72,5 +72,5 @@ For support, please open an issue on the plugin repository or contact the author
 
 ## Author
 
-NAyan Ray  
-https://example.com
+Nayan Ray  
+https://dev-nayanray.github.io/
